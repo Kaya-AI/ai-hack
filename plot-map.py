@@ -80,7 +80,7 @@ def reply_message(value_on_submit, msg_list):
     {
       "direction": "recieved",
       "avatar": avatarURL,
-      "content": ask_ai.agent.run(value_on_submit),
+      "content": ask_ai.ask_agent(value_on_submit),
       "timestamp": int(math.floor(time.time() * 1000))
     }
   )
