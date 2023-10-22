@@ -6,3 +6,5 @@ coordinates_list = []
 
 for i in coordinates.iterrows():
     coordinates_list.append((i[1][0], i[1][1]))
+
+print(coordinates_list)
