@@ -7,9 +7,9 @@ date_threshold = input("Enter the date threshold (will filter out everything bef
 
 df = pd.read_csv(input_file_path)
 
-df["Filing Date"] = pd.to_datetime(df['Filing Date'], format='mixed')
+df["Issuance Date"] = pd.to_datetime(df['Issuance Date'], format='mixed')
 
-filtered_df = df[df["Filing Date"] >= pd.to_datetime(date_threshold, format='%m-%d-%Y')]
+filtered_df = df[df["Issuance Date"] >= pd.to_datetime(date_threshold, format='%m-%d-%Y')]
 
 filtered_df.to_csv(output_file_path, index=False)
 
