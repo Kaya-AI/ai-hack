@@ -16,6 +16,6 @@ agent = create_csv_agent(
 
 def ask_agent(question):
   memory.chat_memory.add_user_message(question)
-  response = agent.ask(question)
+  response = agent.run(question)
   memory.chat_memory.add_ai_message(response)
   return response
