@@ -10,5 +10,3 @@ agent = create_csv_agent(
     verbose=True,
     agent_type=AgentType.ZERO_SHOT_REACT_DESCRIPTION,
 )
-
-agent.run(input("Enter a question: "))

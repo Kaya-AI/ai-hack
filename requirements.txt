@@ -1,4 +1,5 @@
 pandas
 dash
 langchain
-anthropic==0.2.10
+dash_chat_components
+openai
