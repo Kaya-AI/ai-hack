@@ -15,7 +15,7 @@ agent = create_csv_agent(
 )
 
 def ask_agent(question):
-  memory.add_user_utterance(question)
-  response = agent.generate_response(question, memory.get_conversation_history())
-  memory.add_agent_utterance(response)
+  memory.chat_memory.add_user_message(question)
+  response = agent.ask(question)
+  memory.chat_memory.add_ai_message(response)
   return response
