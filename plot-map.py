@@ -23,8 +23,7 @@ fig = go.Figure(go.Scattermapbox(
   marker=go.scattermapbox.Marker(
     size=3,
     opacity=0.6
-  ),
-  hovertext=data["ADDRESS"]
+  )
 ))
 
 fig.update_layout(
