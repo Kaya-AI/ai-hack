@@ -1,2 +1,4 @@
 pandas
 dash
+langchain
+anthropic==0.2.10
