@@ -1,5 +1,6 @@
 import plotly.graph_objects as go
 import pandas as pd
+import streamlit as st
 
 avatar = open("avatar.txt", "r")
 avatarURL = avatar.read()
@@ -46,45 +47,29 @@ import math, time
 
 import ask_ai
 
-# Use Dash to display on a website
-app = Dash(
-  external_stylesheets = [
-    "https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
-  ]
-)
-app.layout = html.Div([
-  dcc.Graph(figure=fig, id="permits-map", style={'width': '90vw', 'height': '65vh'}),
-  dch.ChatSimple(
-    messages=[
-      {
-        "direction": "recieved",
-        "avatar": avatarURL,
-        "content": "What would you like help with?",
-        "timestamp": int(math.floor(time.time() * 1000))
-      }
-    ],
-    id="chatbot",
-    style = {"margin": "20px auto", "maxWidth": "900px", "border": "2px solid red"},
-    avatarOutgoing = userURL
-  )
-])
+st.title("Kaya")
 
-@app.callback(
-  Output("chatbot", "messages"),
-  Input("chatbot", "value_on_submit"),
-  State("chatbot", "messages"),
-  prevent_initial_call=True
-)
-def reply_message(value_on_submit, msg_list):
-  msg_list.append(
-    {
-      "direction": "recieved",
-      "avatar": avatarURL,
-      "content": ask_ai.ask_agent(value_on_submit),
-      "timestamp": int(math.floor(time.time() * 1000))
-    }
-  )
+st.plotly_chart(fig)
 
-  return msg_list
+if "messages" not in st.session_state:
+  st.session_state.messages = []
 
-app.run_server(debug=True)
+# Display chat messages from history on app rerun
+for message in st.session_state.messages:
+  with st.chat_message(message["role"]):
+    st.markdown(message["content"])
+
+# React to user input
+if prompt := st.chat_input("Enter a message"):
+  # Add user message to chat history
+  st.session_state.messages.append({"role": "user", "content": prompt})
+  # Display user message in chat message container
+  with st.chat_message("user"):
+    st.markdown(prompt)
+  # Display assistant response in chat message container
+  with st.chat_message("assistant"):
+    message_placeholder = st.empty()
+    message_placeholder.text("Thinking...")
+    ai_message = ask_ai.ask_agent(prompt)
+    message_placeholder.markdown(ai_message)
+  st.session_state.messages.append({"role": "assistant", "content": ai_message})

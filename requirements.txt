@@ -1,5 +1,5 @@
 pandas
 dash
 langchain
-dash_chat_components
 openai
+streamlit
