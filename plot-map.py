@@ -58,7 +58,7 @@ app.layout = html.Div([
     messages=[
       {
         "direction": "recieved",
-        "avatar": userURL,
+        "avatar": avatarURL,
         "content": "What would you like help with?",
         "timestamp": int(math.floor(time.time() * 1000))
       }
