@@ -40,10 +40,6 @@ fig.update_layout(
   )
 )
 
-from dash import Input, Output, State, Dash, dcc, html
-from dash.exceptions import PreventUpdate
-import math, time
-
 import ask_ai
 
 st.title("Kaya")
