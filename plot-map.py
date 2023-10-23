@@ -37,6 +37,14 @@ import ask_ai
 
 st.title("Kaya")
 
+# Hides the watermark
+hide_streamlit_style = """
+<style>
+    footer {visibility: hidden;}
+</style>
+"""
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
 st.plotly_chart(fig)
 
 if "messages" not in st.session_state:
