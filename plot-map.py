@@ -42,7 +42,6 @@ fig.update_layout(
 
 from dash import Input, Output, State, Dash, dcc, html
 from dash.exceptions import PreventUpdate
-import dash_chat_components as dch
 import math, time
 
 import ask_ai
