@@ -3,3 +3,4 @@ dash
 langchain
 openai
 streamlit
+tabulate
