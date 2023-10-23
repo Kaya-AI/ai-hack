@@ -2,13 +2,6 @@ import plotly.graph_objects as go
 import pandas as pd
 import streamlit as st
 
-avatar = open("avatar.txt", "r")
-avatarURL = avatar.read()
-avatar.close()
-
-user = open("user.txt", "r")
-userURL = user.read()
-user.close()
 
 # Read the data
 data = pd.read_csv("last-month.csv") # This is just last month for testing, use permits-2020-onwards.csv for since 2020
