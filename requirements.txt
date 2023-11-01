@@ -1,6 +1,7 @@
 pandas
 dash
 langchain
+langchain_experimental
 openai
 streamlit
 tabulate
